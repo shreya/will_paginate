@@ -50,7 +50,7 @@ module WillPaginate
           else
             @total_entries_queried = true
             result = count
-            result = result.size if result.respond_to?(:size) and !result.is_a?(Integer)
+            result = result.count if result.respond_to?(:size) and !result.is_a?(Integer)
             result
           end
         end
