@@ -50,7 +50,7 @@ module WillPaginate
           else
             @total_entries_queried = true
             result = count
-            result = result.length if result.respond_to?(:size) and !result.is_a?(Integer)
+            result = result.count if result.respond_to?(:size) and !result.is_a?(Integer)
             result
           end
         end
@@ -63,7 +63,7 @@ module WillPaginate
           rel = self.except(*excluded)
           # TODO: hack. decide whether to keep
           rel = rel.apply_finder_options(@wp_count_options) if defined? @wp_count_options
-          rel.count
+          rel.length
         else
           super
         end
